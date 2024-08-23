@@ -1,5 +1,9 @@
-from django.shortcuts import render
-from rest_framework.permissions import IsAuthenticated
+from rest_framework import generics
+from rest_framework_simplejwt.views import TokenObtainPairView
+from .serializers import CustomUserRegistrationSerializer
+from .serializers import CustomTokenObtainPairSerializer
+class CustomUserRegistrationView(generics.CreateAPIView):
+    serializer_class = CustomUserRegistrationSerializer
 
-
-# Create your views here.
+class CustomTokenObtainPairView(TokenObtainPairView):
+    serializer_class = CustomTokenObtainPairSerializer
